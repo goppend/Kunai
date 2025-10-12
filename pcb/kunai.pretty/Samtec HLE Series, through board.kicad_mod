@@ -1,0 +1,172 @@
+(footprint "Samtec HLE Series, through board"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "2 row 8 position female header, surface mount, bottom mount, through-board")
+	(tags "female header 8 position surface mount through board")
+	(property "Reference" "REF**"
+		(at -1.27 -6.35 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "26c70e85-d6c5-48a8-a8e5-13e27ad34092")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Samtec HLE Series, through board"
+		(at 0 8 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "dfeeaf60-69a3-4b21-91a1-f63b86304e80")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "20ab5313-925a-4d1a-afb7-ba2142925b2b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5bc6a850-a061-4ca1-bfd4-cb7cc1cef8bc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2.667 -5.207)
+		(end 2.667 5.207)
+		(stroke
+			(width 0.15)
+			(type default)
+		)
+		(fill no)
+		(layer "Edge.Cuts")
+		(uuid "9256b184-926d-444f-a005-50f83089810e")
+	)
+	(fp_rect
+		(start -3.2893 -5.08)
+		(end 3.2893 5.08)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(fill no)
+		(layer "B.CrtYd")
+		(uuid "fb31cc32-970a-465a-a74d-29911ab7843b")
+	)
+	(fp_rect
+		(start -2.54 -5.08)
+		(end 2.54 5.08)
+		(stroke
+			(width 0.127)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "b36b9987-07f1-4a64-8ea2-c13bd3f172c4")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 9.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d9a11377-af14-4a83-8caf-69d896402d51")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -3.429 -3.81 270)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "0ccf21bd-d8ea-47df-8c41-5c3541348500")
+	)
+	(pad "2" smd rect
+		(at -3.429 -1.27 270)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "1e2800be-fe19-4dbc-ad84-1535e21c7431")
+	)
+	(pad "3" smd rect
+		(at -3.429 1.27 270)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "0d56c799-164c-489a-8e38-3f77439ea723")
+	)
+	(pad "4" smd rect
+		(at -3.429 3.81 270)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "0bbd94af-1128-41d4-b29b-990f0821f6b2")
+	)
+	(pad "5" smd rect
+		(at 3.429 3.81 270)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "94f91967-73f4-4dd1-bb5c-44ef56acc0eb")
+	)
+	(pad "6" smd rect
+		(at 3.429 1.27 90)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "0fba8c9a-09b4-4a7d-becc-c30a42f87a2e")
+	)
+	(pad "7" smd rect
+		(at 3.429 -1.27 90)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "758b66fb-992c-4f36-b747-0a562127e3ea")
+	)
+	(pad "8" smd rect
+		(at 3.429 -3.81 90)
+		(size 1.27 0.762)
+		(layers "B.Cu" "B.Mask" "B.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "0321ce16-c0b6-4567-ac61-7875595de420")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d-models/HLE-104-02-F-DV-BE.stp"
+		(offset
+			(xyz 0 0 -1.6764)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -90)
+		)
+	)
+)

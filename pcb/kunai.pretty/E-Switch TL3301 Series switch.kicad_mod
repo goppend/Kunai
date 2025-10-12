@@ -1,0 +1,236 @@
+(footprint "E-Switch TL3301 Series switch"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "tactile pushbutton switch")
+	(property "Reference" "REF**"
+		(at -0.635 -4.699 0)
+		(layer "F.SilkS")
+		(uuid "9a94ce00-4e1a-4f38-b553-52f41514d036")
+		(effects
+			(font
+				(size 1.4 1.4)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "E-Switch TL3301SPF160QG"
+		(at 0 5 0)
+		(layer "F.Fab")
+		(uuid "e4d58cd0-76d2-43c8-8140-0a8c96b99276")
+		(effects
+			(font
+				(size 1.4 1.4)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://configured-product-images.s3.amazonaws.com/Datasheets/TL3301.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ad1c1573-1ac6-4229-af1f-6b575ddd15c1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Tactile Switch, Surface Mount"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8e9b6440-4911-4a27-b2cf-cc077bcfb8bf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -3 -3)
+		(end -3 3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8b829ae8-f3e5-4098-8698-7403639aae20")
+	)
+	(fp_line
+		(start -3 3)
+		(end 3 3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7b6e189f-2869-429a-ba92-a7a79d0dc9dd")
+	)
+	(fp_line
+		(start 3 -3)
+		(end -3 -3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "afb3d732-2bd2-4895-9429-946e79f646ee")
+	)
+	(fp_line
+		(start 3 3)
+		(end 3 -3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "796401e5-3ba9-4a62-a0b3-0e1af3e8cde9")
+	)
+	(fp_circle
+		(center -6.25 2.25)
+		(end -6.15 2.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "70f7f7a2-6a1e-4400-8329-6efb804390bb")
+	)
+	(fp_line
+		(start -5.85 -3.25)
+		(end 5.85 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "41ce951c-141a-4b7a-be3e-e198324d77cb")
+	)
+	(fp_line
+		(start -5.85 3.25)
+		(end -5.85 -3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "cae6e2fb-8171-4951-bee1-0e9a9cccfc58")
+	)
+	(fp_line
+		(start 5.85 -3.25)
+		(end 5.85 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "096bc41a-a310-4bfe-bc11-df388478c7b0")
+	)
+	(fp_line
+		(start 5.85 3.25)
+		(end -5.85 3.25)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fd90fd96-3739-4ba9-b40b-25bdd6df88b1")
+	)
+	(fp_line
+		(start -3 -3)
+		(end 3 -3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "c87efafb-adf0-4fb4-9d16-f17672363de3")
+	)
+	(fp_line
+		(start -3 3)
+		(end -3 -3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e1b7bb45-296a-44b0-961c-3c32f4751bdf")
+	)
+	(fp_line
+		(start 3 -3)
+		(end 3 3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "3a62c84f-ad93-4844-8e90-d202909088f7")
+	)
+	(fp_line
+		(start 3 3)
+		(end -3 3)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2203e9b3-c2df-46c8-9264-fd6a7463a74a")
+	)
+	(fp_circle
+		(center -6.25 2.25)
+		(end -6.15 2.25)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "f3ae9f3c-11a1-4725-be5e-4077e140d6a0")
+	)
+	(pad "1" smd rect
+		(at -4.55 2.225)
+		(size 2.1 1.45)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "3fc335cb-ddfa-450e-944a-49b70e0ee549")
+	)
+	(pad "1" smd rect
+		(at 4.55 2.225)
+		(size 2.1 1.45)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "27f3e968-8a7a-4968-89a3-7931ec00100c")
+	)
+	(pad "2" smd rect
+		(at -4.55 -2.225)
+		(size 2.1 1.45)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "70034823-0ad5-4c6d-900d-ebc649ac1d43")
+	)
+	(pad "2" smd rect
+		(at 4.55 -2.225)
+		(size 2.1 1.45)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "62e2d4c2-e49a-4770-957a-6baf0b01a201")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d-models/TL3301SPF160QG.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

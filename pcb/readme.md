@@ -1,6 +1,6 @@
-![](http://github.com/goppend/kunai/blob/master/img/logo_kunai.png)
+![](https://github.com/goppend/Kunai/blob/main/img/logo_kunai.png)
 
-![](http://github.com/goppend/kunai/blob/master/img/v0 render.png)
+![](https://github.com/goppend/Kunai/blob/main/img/v0_render.png)
 
 ## Prototype PCB
 This is the first release of the Kunai PCB. It's a functional prototype, and as such isn't recommended for gaming yet.

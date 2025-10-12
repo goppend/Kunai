@@ -1,4 +1,4 @@
-![](http://github.com/goppend/kunai/blob/master/img/logo_kunai.png)
+![](https://github.com/goppend/Kunai/blob/main/img/logo_kunai.png)
 
 The Kunai is an open source gamepad based on the Raspberry Pi Pico microcontroller.
 

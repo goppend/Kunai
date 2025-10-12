@@ -1,4 +1,4 @@
-![](http://github.com/goppend/kunai/blob/master/img/logo_kunai.png)
+![](https://github.com/goppend/Kunai/blob/main/img/logo_kunai.png)
 
 ## Kunai Firmware
 This is the first release of the Kunai Firmware. Only one of its operating modes is mostly complete, and needs more and better testing.

@@ -19,7 +19,7 @@ To-do
 ---
 Currently, this project is exiting the "functional prototype" phase, and is not especially useful for gaming, but this will change soon. 
 - Shrink the prototype PCB down to work as a drop-in replacement for Dualshock controllers.
-- Develop a module as small as possible for rapid integration into custom handheld projects.
+- Develop a module as small as possible for rapid integration into custom handheld projects. Version 0 of the module has been released! Check it out in the pcb-module directory.
 
 Attribution
 ---

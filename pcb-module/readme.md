@@ -5,7 +5,7 @@
 ## Module PCB
 This is the Kunai, but in a 22 mm x 22 mm module. The intent is to provide a solution for rapid integration into exiting projects. Thus, most of the I/O is dedicated towards direct connections to discrete buttons, though there's no reason a connection to an ADC couldn't be made just like a full-sized Kunai.
 
-There is KiCad footprint `kunai-mod.kicad_sym` available in the root of this directory, which contains the general pinout compatible with the module.
+There is KiCad footprint `kunai-mod.kicad_mod` available in the root of this directory, which contains the general pinout compatible with the module.
 
 ### Future Development
 ---

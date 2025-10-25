@@ -504,14 +504,14 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "pdf/",
       "pos_files": "production/",
       "specctra_dsn": "",
       "step": "",
       "svg": "",
       "vrml": ""
     },
-    "page_layout_descr_file": ""
+    "page_layout_descr_file": "kunai-mod"
   },
   "schematic": {
     "annotate_start_num": 0,
@@ -644,8 +644,8 @@
       "version": 1
     },
     "net_format_name": "",
-    "page_layout_descr_file": "",
-    "plot_directory": "",
+    "page_layout_descr_file": "kunai-mod",
+    "plot_directory": "pdf/",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
     "spice_external_command": "spice \"%I\"",

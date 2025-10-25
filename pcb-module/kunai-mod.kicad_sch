@@ -4,6 +4,11 @@
 	(generator_version "9.0")
 	(uuid "417d069e-011d-4547-823c-3e2de58b5993")
 	(paper "A")
+	(title_block
+		(title "Kunai module")
+		(date "2025-10-24")
+		(rev "0")
+	)
 	(lib_symbols
 		(symbol "Connector_Generic:Conn_01x04"
 			(pin_names
@@ -7712,22 +7717,22 @@
 			)
 		)
 		(pin "4"
-			(uuid "e504d816-fae6-44e2-a583-a1d01562050c")
+			(uuid "e504d816-fae6-44e2-a583-a1d01562050d")
 		)
 		(pin "2"
-			(uuid "5be2f179-6e17-4132-ac86-532741a6f52a")
+			(uuid "5be2f179-6e17-4132-ac86-532741a6f52b")
 		)
 		(pin "3"
-			(uuid "92ddcfbe-fca4-49be-97e5-d35961b28bf3")
+			(uuid "92ddcfbe-fca4-49be-97e5-d35961b28bf4")
 		)
 		(pin "6"
-			(uuid "e19ee13f-36d6-434b-b75e-24e1c073101d")
+			(uuid "e19ee13f-36d6-434b-b75e-24e1c073101e")
 		)
 		(pin "5"
-			(uuid "fb2898a2-f0aa-4747-9bac-379589ba3b07")
+			(uuid "fb2898a2-f0aa-4747-9bac-379589ba3b08")
 		)
 		(pin "1"
-			(uuid "95b54d7a-da8d-472e-8fb9-e72c79509d8c")
+			(uuid "95b54d7a-da8d-472e-8fb9-e72c79509d8d")
 		)
 		(instances
 			(project ""

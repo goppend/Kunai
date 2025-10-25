@@ -1,0 +1,121 @@
+(footprint "1x04 1.27mm test point"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "43c2bad9-4515-4772-8193-df4c07f3e715")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "1x04 1.27mm test point"
+		(at 0 6.1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "0fc049e2-7d74-4415-b9e8-155e3f678fb4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6281244d-8fed-4231-841e-495dd69f6d45")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "1 row of 3 test points"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d1ced141-8a55-4c86-b4a0-2c266f09fc5c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_poly
+		(pts
+			(xy 0 0.580998) (xy 0.249885 0.9) (xy -0.281784 0.9)
+		)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "bde3b944-193b-4072-bbdc-1b9ba35916bd")
+	)
+	(fp_rect
+		(start -0.53 -0.5)
+		(end 4.37 0.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "e51baf8d-a0ae-4beb-92ac-75ce7718cbdc")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 7.6 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7af56d28-3657-42d1-a850-713863140fd0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd circle
+		(at 0 0)
+		(size 0.75 0.75)
+		(property pad_prop_testpoint)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "68e82abc-5ed9-449f-b111-ca7f9a98e97e")
+	)
+	(pad "2" smd circle
+		(at 1.27 0)
+		(size 0.75 0.75)
+		(property pad_prop_testpoint)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bad60430-c73b-4205-8645-29f44feb4e16")
+	)
+	(pad "3" smd circle
+		(at 2.54 0)
+		(size 0.75 0.75)
+		(property pad_prop_testpoint)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "8ca0405a-26ff-4908-8b77-92e1d0cb3f8b")
+	)
+	(pad "4" smd circle
+		(at 3.81 0)
+		(size 0.75 0.75)
+		(property pad_prop_testpoint)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "ec21decb-77bc-464d-b888-8baba3e4cc8e")
+	)
+	(embedded_fonts no)
+)

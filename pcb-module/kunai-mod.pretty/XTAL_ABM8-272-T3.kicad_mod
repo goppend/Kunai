@@ -1,0 +1,195 @@
+(footprint "XTAL_ABM8-272-T3"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Abracon Ceramic SMD Crystal")
+	(tags "Abracon Crystal XTAL")
+	(property "Reference" "REF**"
+		(at 0.45 -2.95 0)
+		(layer "F.SilkS")
+		(uuid "9a880707-8fcc-4ead-9c0b-7a526fdc83d4")
+		(effects
+			(font
+				(size 0.787402 0.787402)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "ABM8-272-T3"
+		(at 5.95 2.95 0)
+		(layer "F.Fab")
+		(uuid "5321bc2d-8860-4bea-a179-05f3f574a1a8")
+		(effects
+			(font
+				(size 0.787402 0.787402)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6536/ABM8_Datasheet.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "df5a1cea-5aa9-4aa6-acb2-7a6f532ce763")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Abracon Ceramic SMD Crystal"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a97856d5-3834-4ba9-bb5e-e074b7b6c6f1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.25 -0.085)
+		(end -1.25 0.085)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e7561148-9eb4-4336-a7b1-8610d1ad856a")
+	)
+	(fp_line
+		(start 1.25 -0.085)
+		(end 1.25 0.085)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8a7ffad8-79c7-4b05-89ab-4b125c27a63b")
+	)
+	(fp_line
+		(start -1.65 -2.05)
+		(end -1.65 2.05)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "822d9323-86af-4913-a760-57de0464969e")
+	)
+	(fp_line
+		(start -1.65 2.05)
+		(end 1.65 2.05)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "fd088110-65e7-4e91-ae55-da03b32ccb31")
+	)
+	(fp_line
+		(start 1.65 -2.05)
+		(end -1.65 -2.05)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "6d18af15-02cc-4dcd-971b-de521bb9c037")
+	)
+	(fp_line
+		(start 1.65 2.05)
+		(end 1.65 -2.05)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "f719096e-2808-4e3e-9bfe-c1b31a0617d3")
+	)
+	(fp_line
+		(start -1.25 -1.6)
+		(end -1.25 1.6)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "994db3d7-3b72-4b31-8088-9f654f921ac8")
+	)
+	(fp_line
+		(start -1.25 1.6)
+		(end 1.25 1.6)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ef348d20-a2e4-400c-afd9-f948b6525939")
+	)
+	(fp_line
+		(start 1.25 -1.6)
+		(end -1.25 -1.6)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "1fbf6030-b398-44f9-8948-f7ed7d3c2119")
+	)
+	(fp_line
+		(start 1.25 1.6)
+		(end 1.25 -1.6)
+		(stroke
+			(width 0.127)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "f1be5313-fc64-46dd-a236-2477e1d25719")
+	)
+	(pad "1" smd rect
+		(at -0.875 -1.15)
+		(size 1.05 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "4c5ee8e8-f1dd-4986-8a7d-8d270bdeebc2")
+	)
+	(pad "2" smd rect
+		(at -0.875 1.15)
+		(size 1.05 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "91b4d1b3-82bc-4598-85ca-7cdc12afd78f")
+	)
+	(pad "3" smd rect
+		(at 0.875 1.15)
+		(size 1.05 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "e954c923-907c-4d32-b589-59e8cec1e424")
+	)
+	(pad "4" smd rect
+		(at 0.875 -1.15)
+		(size 1.05 1.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "3aa89862-7b24-487e-ac96-936588bce84a")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/3d models/ABM8-272-T3.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 -0 -0)
+		)
+	)
+)

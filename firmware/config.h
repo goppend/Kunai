@@ -6,11 +6,6 @@
 	#define GPIO_R_MOTOR    0
 	#define GPIO_R3         2
 	#define GPIO_START      7
-    #define PIO_HOST_CMD    16
-    #define PIO_HOST_ATN    17
-    #define PIO_HOST_CLK    18
-    #define PIO_HOST_DAT    19
-    #define PIO_HOST_ACK    20
 	#define GPIO_ANALOG     22
 	#define GPIO_LED        25
 	#define GPIO_SELECT     26
@@ -23,11 +18,6 @@
 	#define GPIO_START      2
 	#define GPIO_L_MOTOR    3
 	#define GPIO_R_MOTOR    4
-    #define PIO_HOST_ACK    11
-    #define PIO_HOST_CLK    12
-    #define PIO_HOST_ATN    13
-    #define PIO_HOST_CMD    14
-    #define PIO_HOST_DAT    15
 	#define GPIO_LED        23
 	#define GPIO_SELECT     24
 	#define GPIO_ANALOG     25

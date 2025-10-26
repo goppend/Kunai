@@ -2,7 +2,11 @@
 #include <stdio.h>
 #include "pico/stdio.h"
 
+#ifdef MODULE
+#include "psxSPI-mod.pio.h"
+#else
 #include "psxSPI.pio.h"
+#endif
 #include "controller_simulator.h"
 #include "pico/multicore.h"
 

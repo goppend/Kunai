@@ -35,61 +35,38 @@ pico_sdk_init()
 
 # Add executables
 add_executable(kunai kunai.c)
-add_executable(kunai-mod kunai.c)
 
 add_subdirectory(psx-device)
 add_subdirectory(portable-device)
 
 pico_set_program_name(kunai "kunai")
-pico_set_program_version(kunai "0.2")
-
-pico_set_program_name(kunai-mod "kunai-mod")
-pico_set_program_version(kunai-mod "0.2")
+pico_set_program_version(kunai "0.2.1")
 
 # Generate PIO header
 pico_generate_pio_header(kunai ${CMAKE_CURRENT_LIST_DIR}/psx-device/psxSPI.pio)
-pico_generate_pio_header(kunai-mod ${CMAKE_CURRENT_LIST_DIR}/psx-device/psxSPI-mod.pio)
 
 # Modify the below lines to enable/disable output over UART/USB
 pico_enable_stdio_uart(kunai 0)
 pico_enable_stdio_usb(kunai 0)
-pico_enable_stdio_uart(kunai-mod 0)
-pico_enable_stdio_usb(kunai-mod 0)
+
+# Add the preprocessor definitions
+target_compile_definitions(kunai PRIVATE DIGITAL_INPUTS) # remove DIGITAL_INPUTS to use analog buttons
 
 # Add the standard library to the build
 target_link_libraries(kunai
-        pico_stdlib
-        pico_multicore)
-
-# Add the standard include files to the build
-target_include_directories(kunai PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-)
-
-# Add any user requested libraries
-target_link_libraries(kunai
-        psx-device
-        portable-device)
-
-# Add the preprocessor definition that configures the module
-target_compile_definitions(kunai-mod PRIVATE MODULE)
-
-# Add the standard library to the build
-target_link_libraries(kunai-mod
         pico_stdlib
         pico_multicore
         hardware_adc)
 
 # Add the standard include files to the build
-target_include_directories(kunai-mod
+target_include_directories(kunai
         PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
 )
 
 # Add any user requested libraries
-target_link_libraries(kunai-mod
+target_link_libraries(kunai
         psx-device
         portable-device)
 
 pico_add_extra_outputs(kunai)
-pico_add_extra_outputs(kunai-mod)

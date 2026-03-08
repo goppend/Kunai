@@ -1,10 +1,7 @@
 #include "pico/stdio.h"
 #include "hardware/spi.h"
 #include "hardware/pwm.h"
-
-#ifdef MODULE
 #include "hardware/adc.h"
-#endif
 
 #include "controller_simulator.h"
 #include "portable_device.h"
@@ -12,13 +9,7 @@
 
 // Table correlating pins to their function or I/O direction
 static uint8_t gpio_table[] = {
-#ifndef DIGITAL_INPUTS
-    GPIO_LEFT_ADC,      GPIO_FUNC_NULL, GPIO_OUT,
-    GPIO_RIGHT_ADC,     GPIO_FUNC_NULL, GPIO_OUT,
-    SPI_DEV_RX,         GPIO_FUNC_SPI, 0,
-    SPI_DEV_TX,         GPIO_FUNC_SPI, 0,
-    SPI_DEV_SCK,        GPIO_FUNC_SPI, 0,
-#else
+#ifdef DIGITAL_INPUTS
     GPIO_DPAD_UP,       GPIO_FUNC_NULL, GPIO_IN,
     GPIO_DPAD_DOWN,     GPIO_FUNC_NULL, GPIO_IN,
     GPIO_DPAD_LEFT,     GPIO_FUNC_NULL, GPIO_IN,
@@ -31,6 +22,16 @@ static uint8_t gpio_table[] = {
     GPIO_SHOULDER_L2,   GPIO_FUNC_NULL, GPIO_IN,
     GPIO_SHOULDER_R1,   GPIO_FUNC_NULL, GPIO_IN,
     GPIO_SHOULDER_R2,   GPIO_FUNC_NULL, GPIO_IN,
+    GPIO_ANA_R_Y,       GPIO_FUNC_SIO,  GPIO_IN,
+    GPIO_ANA_R_X,       GPIO_FUNC_SIO,  GPIO_IN,
+    GPIO_ANA_L_Y,       GPIO_FUNC_SIO,  GPIO_IN,
+    GPIO_ANA_L_X,       GPIO_FUNC_SIO,  GPIO_IN,
+#else
+    GPIO_LEFT_ADC,      GPIO_FUNC_NULL, GPIO_OUT,
+    GPIO_RIGHT_ADC,     GPIO_FUNC_NULL, GPIO_OUT,
+    SPI_DEV_RX,         GPIO_FUNC_SPI, 0,
+    SPI_DEV_TX,         GPIO_FUNC_SPI, 0,
+    SPI_DEV_SCK,        GPIO_FUNC_SPI, 0,
 #endif
     GPIO_L_MOTOR,       GPIO_FUNC_PWM, 0,
     GPIO_R3,            GPIO_FUNC_NULL, GPIO_IN,
@@ -48,21 +49,17 @@ static bool mode_state_change_flag = false;
 
 // the array containing the last smoothed analog input
 // Each index is for a different input.
-static uint8_t analog_smooth[12];
+static uint8_t analog_smooth[ANALOG_CHANNELS];
 
 // read from an ADC on the SPI bus.
-// adc_select - which ADC to select, -1 is the on-chip ADC
+// adc_select - which ADC to select, ignored when DIGITAL_INPUTS is defined
 // channel - the channel to read from
 // returns the resultant byte read from the ADC
 uint8_t read_adc(uint8_t adc_select, uint8_t channel) {
-#ifdef MODULE
-	if (adc_select == -1)
-	{
-		adc_select_input(channel);
-		return adc_read();
-	}
-#endif
-	
+#ifdef DIGITAL_INPUTS
+    adc_select_input(channel);
+    return adc_read() >> 4;
+#else
     uint8_t address = channel << 3;
     uint8_t result[2];
 
@@ -89,6 +86,7 @@ uint8_t read_adc(uint8_t adc_select, uint8_t channel) {
     gpio_put(GPIO_RIGHT_ADC, 1);
 
     return result[0]<<4 | result[1]>>4;
+#endif
 }
 
 // Perform an exponential smoothing algorithm on raw ADC values
@@ -104,6 +102,7 @@ uint8_t exponential_smooth(uint8_t next, uint8_t button_ix) {
 void portable_device_init() {
     // init digital IO
     spi_init(spi1, 1000 * 1000); // init device SPI bus at 1 MHz
+    adc_init();
 
     gpio_set_function(GPIO_R_MOTOR, GPIO_FUNC_PWM);
     uint pwm_slice_num = pwm_gpio_to_slice_num(GPIO_R_MOTOR);
@@ -133,6 +132,15 @@ void portable_device_init() {
                 }
                 break;
             }
+            case GPIO_FUNC_SIO:
+            {
+                // init analog inputs
+                gpio_set_dir(gpio_table[gpio_table_index * 3], gpio_table[gpio_table_index * 3 + 2]);
+                gpio_set_function(gpio_table[gpio_table_index * 3], GPIO_FUNC_SIO);
+                gpio_disable_pulls(gpio_table[gpio_table_index * 3]);
+                gpio_set_input_enabled(gpio_table[gpio_table_index * 3], false);
+                break;
+            }
             case GPIO_FUNC_SPI:
             {
                 // init SPI
@@ -155,66 +163,50 @@ void portable_device_init() {
 
 // Gather and process inputs and ouputs
 void portable_device_loop(PSXInputState* psxReport, PSXOutputState* psxFeedback) {
-#ifndef DIGITAL_INPUTS
+#ifdef DIGITAL_INPUTS
+	psxReport->dpad_rt  = !gpio_get(GPIO_DPAD_RIGHT)    ? 0xFF : 0x00;
+	psxReport->dpad_up  = !gpio_get(GPIO_DPAD_UP)       ? 0xFF : 0x00;
+	psxReport->dpad_lt  = !gpio_get(GPIO_DPAD_LEFT)     ? 0xFF : 0x00;
+	psxReport->dpad_dn  = !gpio_get(GPIO_DPAD_DOWN)     ? 0xFF : 0x00;
+	psxReport->shld_l1  = !gpio_get(GPIO_SHOULDER_L1)   ? 0xFF : 0x00;
+	psxReport->shld_l2  = !gpio_get(GPIO_SHOULDER_L2)   ? 0xFF : 0x00;
+	psxReport->face_cir = !gpio_get(GPIO_FACE_CIRCLE)   ? 0xFF : 0x00;
+	psxReport->face_tri = !gpio_get(GPIO_FACE_TRIANGLE) ? 0xFF : 0x00;
+	psxReport->face_squ = !gpio_get(GPIO_FACE_SQUARE)   ? 0xFF : 0x00;
+	psxReport->face_crs = !gpio_get(GPIO_FACE_CROSS)    ? 0xFF : 0x00;
+	psxReport->shld_r1  = !gpio_get(GPIO_SHOULDER_R1)   ? 0xFF : 0x00;
+	psxReport->shld_r2  = !gpio_get(GPIO_SHOULDER_R2)   ? 0xFF : 0x00;
+
+    // Use the onboard ADC for joystick inputs
+    psxReport->rjoy_y = exponential_smooth(read_adc(-1, 0), 0);
+    psxReport->rjoy_x = exponential_smooth(read_adc(-1, 1), 1);
+    psxReport->ljoy_y = exponential_smooth(read_adc(-1, 2), 2);
+    psxReport->ljoy_x = exponential_smooth(read_adc(-1, 3), 3);
+#else
     psxReport->dpad_rt = exponential_smooth(read_adc(1, 0), 0);
     psxReport->dpad_up = exponential_smooth(read_adc(1, 1), 1);
     psxReport->dpad_lt = exponential_smooth(read_adc(1, 2), 2);
     psxReport->shld_l1 = exponential_smooth(read_adc(1, 3), 3);
     psxReport->shld_l2 = exponential_smooth(read_adc(1, 4), 4);
-    psxReport->dpad_dn = exponential_smooth(read_adc(1, 7), 5);
+    psxReport->ljoy_y = read_adc(1, 5);
+    psxReport->ljoy_x = read_adc(1, 6);
+    psxReport->dpad_dn = exponential_smooth(read_adc(1, 7), 7);
 
-    psxReport->face_cir = exponential_smooth(read_adc(2, 0), 6);
-    psxReport->face_tri = exponential_smooth(read_adc(2, 1), 7);
-    psxReport->face_squ = exponential_smooth(read_adc(2, 2), 8);
-    psxReport->face_crs = exponential_smooth(read_adc(2, 5), 9);
-    psxReport->shld_r1  = exponential_smooth(read_adc(2, 6), 10);
-    psxReport->shld_r2  = exponential_smooth(read_adc(2, 7), 11);
-#else
-	psxReport->dpad_rt = gpio_get(GPIO_DPAD_RIGHT);
-	psxReport->dpad_up = gpio_get(GPIO_DPAD_UP);
-	psxReport->dpad_lt = gpio_get(GPIO_DPAD_LEFT);
-	psxReport->dpad_dn = gpio_get(GPIO_DPAD_DOWN);
-	psxReport->shld_l1 = gpio_get(GPIO_SHOULDER_L1);
-	psxReport->shld_l2 = gpio_get(GPIO_SHOULDER_L2);
-	psxReport->face_cir = gpio_get(GPIO_FACE_CIRCLE);
-	psxReport->face_tri = gpio_get(GPIO_FACE_TRIANGLE);
-	psxReport->face_squ = gpio_get(GPIO_FACE_SQUARE);
-	psxReport->face_crs = gpio_get(GPIO_FACE_CROSS);
-	psxReport->shld_r1  = gpio_get(GPIO_SHOULDER_R1);
-	psxReport->shld_r2  = gpio_get(GPIO_SHOULDER_R2);
-#endif
-
-#ifndef MODULE
-    psxReport->ljoy_x = read_adc(1, 5); // for the main PCB, read from the same ADC as the rest of the pressure buttons
-    psxReport->ljoy_y = read_adc(1, 6);
+    psxReport->face_cir = exponential_smooth(read_adc(2, 0), 8);
+    psxReport->face_tri = exponential_smooth(read_adc(2, 1), 9);
+    psxReport->face_squ = exponential_smooth(read_adc(2, 2), 10);
     psxReport->rjoy_y = read_adc(2, 3);
     psxReport->rjoy_x = read_adc(2, 4);
-#else
-    psxReport->rjoy_y = read_adc(-1, 0); // for the module, read from the on-chip ADC
-    psxReport->rjoy_x = read_adc(-1, 1);
-    psxReport->ljoy_y = read_adc(-1, 2);
-    psxReport->ljoy_x = read_adc(-1, 3);
+    psxReport->face_crs = exponential_smooth(read_adc(2, 5), 13);
+    psxReport->shld_r1  = exponential_smooth(read_adc(2, 6), 14);
+    psxReport->shld_r2  = exponential_smooth(read_adc(2, 7), 15);
 #endif
-	
+
     psxReport->buttons = 0x0000;
-    report_button(GPIO_SELECT, 0);
-    report_button(GPIO_L3, 1);
-    report_button(GPIO_R3, 2);
-    report_button(GPIO_START, 3);
-#ifndef DIGITAL_INPUTS
-    report_button_analog(dpad_up, 4);
-    report_button_analog(dpad_rt, 5);
-    report_button_analog(dpad_dn, 6);
-    report_button_analog(dpad_lt, 7);
-    report_button_analog(shld_l2, 8);
-    report_button_analog(shld_r2, 9);
-    report_button_analog(shld_l1, 10);
-    report_button_analog(shld_r1, 11);
-    report_button_analog(face_tri, 12);
-    report_button_analog(face_cir, 13);
-    report_button_analog(face_crs, 14);
-    report_button_analog(face_squ, 15);
-#else
+    report_gpio(GPIO_SELECT, 0);
+    report_gpio(GPIO_L3, 1);
+    report_gpio(GPIO_R3, 2);
+    report_gpio(GPIO_START, 3);
     report_button(dpad_up, 4);
     report_button(dpad_rt, 5);
     report_button(dpad_dn, 6);
@@ -227,7 +219,6 @@ void portable_device_loop(PSXInputState* psxReport, PSXOutputState* psxFeedback)
     report_button(face_cir, 13);
     report_button(face_crs, 14);
     report_button(face_squ, 15);
-#endif
     psxReport->buttons = ~psxReport->buttons;
 
     bool analog_button = gpio_get(GPIO_ANALOG);
